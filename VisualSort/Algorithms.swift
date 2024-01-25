@@ -12,7 +12,6 @@ extension Array where Element: Comparable {
         for index in 0..<count - 1 {
             if self[index] > self[index + 1] {
                 swapAt(index, index + 1)
-                
             }
         }
     }
