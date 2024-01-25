@@ -53,8 +53,8 @@ struct ContentView: View {
             
             
             HStack(spacing: 20) {
-                LabeledContent("Speed") {
-                    Slider(value: $timerSpeed, in: 0.1...1)
+                LabeledContent("Delay") {
+                    Slider(value: $timerSpeed, in: 0.01...1)
                 }
                 
                 Button("Step", action: step)
@@ -78,8 +78,9 @@ struct ContentView: View {
         .onChange(of: timerSpeed) {
             if timerSpeed == 1 || sortFunction.rawValue == "Quick Sort"{
                 timer.upstream.connect().cancel()
+            } else {
+                timer = Timer.publish(every: timerSpeed, on: .main, in: .common).autoconnect()
             }
-            timer = Timer.publish(every: timerSpeed, on: .main, in: .common).autoconnect()
         }
         .onChange(of: sortFunction) {
             sortPosition = 1

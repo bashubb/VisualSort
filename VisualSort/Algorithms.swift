@@ -5,16 +5,26 @@
 //  Created by HubertMac on 25/01/2024.
 //
 
-import Foundation
+import SwiftUI
 
 extension Array where Element: Comparable {
     mutating func bubbleSort(startPosition: Int) -> Int {
-        guard startPosition < count else { return startPosition}
-        if self[startPosition] > self[startPosition + 1] {
-            swapAt(startPosition, startPosition + 1)
+        
+        if startPosition == count - 1 {
+            if self[0] > self[1] {
+                swapAt(0, 1)
+                return 1
+            }
+        } else {
+            if self[startPosition] > self[startPosition + 1] {
+                swapAt(startPosition, startPosition + 1)
+            }
+            return startPosition + 1
         }
-        return startPosition + 1
+        
+        return 0
     }
+    
     
     mutating func insertionSort(startPosition: Int) -> Int {
         guard startPosition < count else { return startPosition}
@@ -39,11 +49,13 @@ extension Array where Element: Comparable {
         var after = self.filter { $0 > pivot }
         let equal = self.filter { $0 == pivot }
         
-       
         before.quickSort()
         after.quickSort()
-        
-        
+       
+            
         self = before + equal + after
+            
+        
+        
     }
 }
