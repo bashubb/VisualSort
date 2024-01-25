@@ -21,9 +21,11 @@ struct ContentView: View {
     
     @State private var timerSpeed = 0.1
     
-    @State private var insertionSortPosition = 1
+    @State private var sortPosition = 1
     
     @State private var sortFunction = SortTypes.bubble
+    
+    @State private var animationSpeed = 1.0
     
     var body: some View {
         VStack(spacing:20) {
@@ -52,7 +54,7 @@ struct ContentView: View {
             
             HStack(spacing: 20) {
                 LabeledContent("Speed") {
-                    Slider(value: $timerSpeed, in: 0...1)
+                    Slider(value: $timerSpeed, in: 0.1...1)
                 }
                 
                 Button("Step", action: step)
@@ -60,7 +62,7 @@ struct ContentView: View {
                 Button("Shuffle") {
                     withAnimation {
                         values.shuffle()
-                        insertionSortPosition = 1
+                        sortPosition = 1
                     }
                 }
                 
@@ -74,20 +76,25 @@ struct ContentView: View {
             step()
         }
         .onChange(of: timerSpeed) {
-            timer.upstream.connect().cancel()
-            
-            if timerSpeed != 0 {
-                timer = Timer.publish(every: timerSpeed, on: .main, in: .common).autoconnect()
+            if timerSpeed == 1 || sortFunction.rawValue == "Quick Sort"{
+                timer.upstream.connect().cancel()
+            }
+            timer = Timer.publish(every: timerSpeed, on: .main, in: .common).autoconnect()
+        }
+        .onChange(of: sortFunction) {
+            sortPosition = 1
+            if sortFunction.rawValue == "Quick Sort"{
+                animationSpeed = 0.2
             }
         }
     }
     func step() {
-        withAnimation{
+        withAnimation(.easeInOut.speed(animationSpeed)) {
             switch sortFunction {
             case .bubble:
-                values.bubbleSort()
+                sortPosition = values.bubbleSort(startPosition: sortPosition)
             case .insertion:
-                insertionSortPosition = values.insertionSort(startPosition: insertionSortPosition)
+                sortPosition = values.insertionSort(startPosition: sortPosition)
             case .quick:
                 values.quickSort()
             }
