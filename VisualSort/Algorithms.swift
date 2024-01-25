@@ -31,5 +31,19 @@ extension Array where Element: Comparable {
         return startPosition + 1
     }
     
-   
+    mutating func quickSort() {
+        guard count > 1 else { return }
+        
+        let pivot =  self[Int.random(in: 0..<count)]
+        var before = self.filter { $0 < pivot }
+        var after = self.filter { $0 > pivot }
+        let equal = self.filter { $0 == pivot }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+            before.quickSort()
+            after.quickSort()
+        }
+        
+        self = before + equal + after
+    }
 }
