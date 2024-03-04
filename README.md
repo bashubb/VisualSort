@@ -27,7 +27,12 @@ VisualSort serves as an educational resource for learning about sorting algorith
 - **Expansion of Sorting Algorithms**: Continuously add new sorting algorithms to the app to provide a comprehensive learning experience. Consider including algorithms like Merge Sort, Selection Sort, and Heap Sort.
 - **Algorithm Comparisons**: Implement features for comparing different sorting algorithms side by side, allowing users to visualize and understand their differences in performance and behavior.
 - **Educational Content**: Enhance the app with educational content such as explanations, tutorials, and quizzes to help users grasp the concepts behind each sorting algorithm.
-- **Platform Expansion**: Explore the possibility of porting VisualSort to other platforms like macOS and iPadOS to reach a wider audience of learners and educators.
+
+
+
+## Screenshots
+
+<img src="https://github.com/bashubb/VisualSort/blob/main/VisutalSort.gif">
 
 
 ## Contributing 🤝
