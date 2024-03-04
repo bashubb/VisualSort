@@ -1,0 +1,24 @@
+{
+    "bubble_sort": {
+        "id": "bubble_sort",
+        "name": "Bubble Sort",
+        "description": "Bubble sort is a simple and intuitive sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. This algorithm is named for the way smaller elements 'bubble' to the top of the list. Although it is easy to understand and implement, bubble sort is not very efficient, especially for large lists. Its average and worst-case time complexity are both O(n^2), where 'n' is the number of elements in the list. Bubble sort is primarily used for educational purposes or for sorting small datasets where efficiency is not a concern.",
+        "complexity": "Average & Worst-case Time Complexity: O(n^2)",
+        "example": "Imagine you have a deck of cards, and you want to arrange them from smallest to largest. With bubble sort, you start at one end of the deck and compare each adjacent pair of cards. If they are in the wrong order, you swap them. You continue doing this until no more swaps are needed, meaning the deck is sorted. It's like repeatedly scanning through the deck, bubbling the highest card to the top until the entire deck is sorted."
+    },
+    "insertion_sort": {
+        "id": "insertion_sort",
+        "name": "Insertion Sort",
+        "description": "Insertion sort is a simple and efficient sorting algorithm that builds the final sorted list one element at a time. It iterates over the input elements and grows a sorted output list. The algorithm works by taking one element from the input list at a time and inserting it into its correct position in the output list. Insertion sort is particularly useful for sorting small datasets or for when the list is almost sorted. Its average-case time complexity is O(n^2), where 'n' is the number of elements in the list, but its best-case time complexity is O(n) when the input list is already sorted. Insertion sort is stable, meaning that the relative order of equal elements is preserved, and it is in-place, meaning it requires only a constant amount of additional memory.",
+        "complexity": "Average Time Complexity: O(n^2), Best-case Time Complexity: O(n)",
+        "example": "Imagine you have a hand of cards, and you want to arrange them from smallest to largest. With insertion sort, you start with an empty hand and gradually pick up cards one by one from the table. As you pick up each card, you compare it to the cards already in your hand and insert it into the correct position. You continue doing this until all cards are in your hand and sorted. It's like sorting cards in your hand by shifting them around until they are in the right order."
+    },
+    "quick_sort": {
+        "id": "quick_sort",
+        "name": "Quick Sort",
+        "description": "Quick sort is a highly efficient sorting algorithm that uses divide and conquer to sort data. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively. Quick sort is known for its fast average and best-case time complexity, which is O(n log n), where 'n' is the number of elements in the list. However, its worst-case time complexity is O(n^2) when the pivot is poorly chosen, such as when the input list is already sorted. Despite this, quick sort is widely used because of its efficiency and adaptability. It is often the sorting algorithm of choice for large datasets and is used in many programming libraries and applications.",
+        "complexity": "Average & Best-case Time Complexity: O(n log n), Worst-case Time Complexity: O(n^2)",
+        "example": "Imagine you have a set of numbered envelopes, and you want to arrange them in ascending order based on their contents. With quick sort, you choose one envelope as the pivot and divide the remaining envelopes into two groups: those with numbers smaller than the pivot and those with numbers larger than the pivot. You then repeat this process recursively for each group until all envelopes are sorted. It's like sorting envelopes by repeatedly dividing them into smaller groups based on their contents until all envelopes are in the correct order."
+    }
+}
+
