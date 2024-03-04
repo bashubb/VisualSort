@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let sortDescriptions: [String: Sort] = Bundle.main.decode([String: Sort].self, from: "sortAlgorithms.json")
+    
     enum SortTypes: String, CaseIterable {
         case bubble = "Bubble Sort"
         case insertion = "Insertion Sort"
@@ -89,11 +91,40 @@ struct ContentView: View {
                 VStack(spacing: 15) {
                     Spacer()
                     VStack(spacing: 10) {
-                        Text("More info about sorting here")
+                        ScrollView {
+                            Text(sortDescriptions[sortFunction.rawValue]?.name ?? "N/A")
+                                .font(.system(size: 40))
+                                .foregroundStyle(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.gray.opacity(0.8), in: .rect(cornerRadius: 15))
+                            
+                            HStack {
+                                Spacer()
+                                Text(sortDescriptions[sortFunction.rawValue]?.complexity ?? "N/A")
+                                    .padding(8)
+                                    .font(.caption.weight(.semibold))
+                                    .background(.white, in: Capsule())
+                                    .padding()
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text("Description")
+                                    .font(.headline)
+                                Text(sortDescriptions[sortFunction.rawValue]?.description ?? "N/A")
+                                    .padding(.vertical)
+                                
+                                Text("Example")
+                                    .font(.headline)
+                                Text(sortDescriptions[sortFunction.rawValue]?.example ?? "N/A")
+                                    .padding(.top)
+                    
+                            }
+                            .padding()
+                        }
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
-                    .padding()
                     .background(RoundedRectangle(cornerRadius: 15).opacity(0.2))
                     .padding(.horizontal)
                     .opacity(showInfo ? 1 : 0)
@@ -105,6 +136,7 @@ struct ContentView: View {
                             .padding(.horizontal)
                     }
                     .font(.title)
+                    .fontDesign(.rounded)
                 }
                 .padding(.bottom, 3)
                 .background(RoundedRectangle(cornerRadius:20).fill(Color.yellow).shadow(radius: 8))
